@@ -1,0 +1,104 @@
+#include <stdio.h>
+
+void showMenu()
+{
+    printf("\n--- SCIENTIFIC CALCULATOR ---\n");
+    printf("1 -> Add two numbers\n");
+    printf("2 -> Subtract two numbers\n");
+    printf("3 -> Multiply two numbers\n");
+    printf("4 -> Divide two numbers\n");
+    printf("5 -> Find square\n");
+    printf("6 -> Find cube\n");
+    printf("7 -> Power calculation\n");
+    printf("8 -> Quit program\n");
+}
+
+float powerCalc(float base, int exp)
+{
+    float ans = 1;
+    int count;
+
+    for (count = 0; count < exp; count++)
+    {
+        ans = ans * base;
+    }
+    return ans;
+}
+
+int main()
+{
+    int option;
+    float a, b;
+    int exponent;
+    char choice = 'y';
+
+    while (choice == 'y' || choice == 'Y')
+    {
+        showMenu();
+        printf("Select option: ");
+        scanf("%d", &option);
+
+        if (option == 1)
+        {
+            printf("Enter two numbers (separated by space): ");
+            scanf("%f %f", &a, &b);
+            printf("Result: %.2f\n", a + b);
+        }
+        else if (option == 2)
+        {
+            printf("Enter two numbers (separated by space): ");
+            scanf("%f %f", &a, &b);
+            printf("Result: %.2f\n", a - b);
+        }
+        else if (option == 3)
+        {
+            printf("Enter two numbers (separated by space): ");
+            scanf("%f %f", &a, &b);
+            printf("Result: %.2f\n", a * b);
+        }
+        else if (option == 4)
+        {
+            printf("Enter two numbers (separated by space): ");
+            scanf("%f %f", &a, &b);
+
+            if (b == 0)
+                printf("Cannot divide by zero\n");
+            else
+                printf("Result: %.2f\n", a / b);
+        }
+        else if (option == 5)
+        {
+            printf("Enter two numbers (separated by space): ");
+            scanf("%f", &a);
+            printf("Square: %.2f\n", a * a);
+        }
+        else if (option == 6)
+        {
+            printf("Enter two numbers (separated by space): ");
+            scanf("%f", &a);
+            printf("Cube: %.2f\n", a * a * a);
+        }
+        else if (option == 7)
+        {
+            printf("Enter base: ");
+            scanf("%f", &a);
+            printf("Enter exponent: ");
+            scanf("%d", &exponent);
+            printf("Result: %.2f\n", powerCalc(a, exponent));
+        }
+        else if (option == 8)
+        {
+            printf("Program terminated.\n");
+            break;
+        }
+        else
+        {
+            printf("Invalid option selected\n");
+        }
+
+        printf("\nContinue? (y/n): ");
+        scanf(" %c", &choice);
+    }
+
+    return 0;
+}
